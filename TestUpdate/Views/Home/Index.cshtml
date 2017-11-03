@@ -1,31 +1,99 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+<div ng-controller="myCntrl" ng-style="{'padding':'10px'}">
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+   <h1> Client Details Page</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <br />
+
+        <input type="button" class="btn" value=" Add New Client" ng-click="AddClientDiv()" /><br />
+ 
+
+    <div class="divList">
+        <p class="divHead">Client Details</p>
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td><b>Id</b></td>
+                <td><b>First Name</b></td>
+                <td><b>Surname</b></td>
+                <td><b>Identity Type</b></td>
+                <td><b>Identity Number</b></td>
+                <td><b>Date of Birth</b></td>
+                <td><b>Actions</b></td>
+            </tr>
+            <tr ng-repeat="client in clients">
+                <td>
+                    {{client.Id}}
+                </td>
+                <td>
+                    {{client.FirstName}}
+                </td>
+                <td>
+                    {{client.LastName}}
+                </td>
+                <td>
+                    {{client.IdentityType}}
+                </td>
+                <td>
+                    {{client.IdentityNumber}}
+                </td>
+                <td>
+                    {{client.DateOfBirth}}
+                </td>
+                <td>
+                    <span ng-click="EditClient(client)" class="btnAdd">Edit Client Details</span>
+                    <span ng-click="DeleteClient(client)" class="btnRed">Delete Client</span>
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div ng-show="divClient">
+        <p class="divHead">{{Action}} Client</p>
+        <table>
+            <tr>
+                <td><b>Id</b></td>
+                <td>
+                    <input type="text" disabled="disabled" ng-model="clientId" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Name</b></td>
+                <td>
+                    <input type="text" ng-model="clientFirstName" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Surname</b></td>
+                <td>
+                    <input type="text" ng-model="clientLastName" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Identity Type</b></td>
+                <td>
+                    <select data-ng-options="o.name for o in options" data-ng-model="clientIdentityType"ng-change="update(id);"></select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Identity Number</b></td>
+                <td>
+                    <input type="text" ng-model="clientIdentityNumber" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Date of Birth</b></td>
+                <td>
+                    <input type="text" ng-model="clientDateOfBirth" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" class="btnAdd" value="Save" ng-click="UpdateClient()" />
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
