@@ -4,8 +4,8 @@
     //To Get All Records  
     function GetAllClients() {
         var getData = clientService.GetAllClients();
-        getData.then(function (emp) {
-            $scope.clients = emp.data;
+        getData.then(function (cln) {
+            $scope.clients = cln.data;
         },function () {
             alert('Error in getting records');
         });
@@ -18,10 +18,14 @@
             $scope.clientId = client.Id;
             $scope.clientFirstName = client.FirstName;
             $scope.clientLastName = client.LastName;
-            $scope.options = [{ name: "SA Identity", id: 1 }, { name: "Passport", id: 2 }];
-            $scope.clientIdentityType = $scope.options[1];
-            //$scope.clientIdentityType = client.IdentityType;
-            $scope.clientDateOfBirth = client.DateOfBirth;
+            $scope.clientIdentityNumber = client.IdentityNumber;
+            //$scope.options = [{ name: "SA Identity", id: 1 }, { name: "Passport", id: 2 }];
+            $scope.clientIdentityType = client.IdentityType;// $scope.options[1];
+           
+          
+            var date_string = client.DateOfBirth;
+            var d = new Date(parseInt(/\/Date\((\d+).*/.exec(date_string)[1]))
+            $scope.clientDateOfBirth = d.toLocaleDateString();
             $scope.Action = "Update";
             $scope.divClient = true;
         }, function () {

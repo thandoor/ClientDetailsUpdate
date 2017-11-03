@@ -1,4 +1,8 @@
 ﻿
+@{ 
+    ViewBag.Title = "Client Details - Home";
+}
+
 <div ng-controller="myCntrl" ng-style="{'padding':'10px'}">
      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -39,8 +43,8 @@
                 <td>
                     {{client.IdentityNumber}}
                 </td>
-                <td>
-                    {{client.DateOfBirth}}
+                <td>{{client.DateOfBirth.slice(6,-2) | date:'dd-MMM-yyyy' }}
+                   
                 </td>
                 <td>
                     <span ng-click="EditClient(client)" class="btnAdd">Edit Client Details</span>
@@ -74,7 +78,10 @@
             <tr>
                 <td><b>Identity Type</b></td>
                 <td>
-                    <select data-ng-options="o.name for o in options" data-ng-model="clientIdentityType"ng-change="update(id);"></select>
+                    <select id="IdentityType" ng-model="clientIdentityType">
+                        <option value="1" >SA ID</option>
+                        <option value="2">Passport</option>
+                    </select>
                 </td>
             </tr>
             <tr>

@@ -1220,7 +1220,9 @@
     <Content Include="themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1233,6 +1235,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\View1.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

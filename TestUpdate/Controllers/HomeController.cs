@@ -66,7 +66,7 @@ namespace TestUpdate.Controllers
                 {
                     dbContext.Customers.Add(client);
                     dbContext.SaveChanges();
-                    return "Client Details Updated";
+                    return "Client Details Added";
                 }
             }
             else
